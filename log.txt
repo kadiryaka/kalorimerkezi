@@ -1,0 +1,26 @@
+YAPILAN DEĞİŞİKLİKLER
+
+/**
+**	13 Şubat Cuma Baş
+**/
+
+Salon için uyarlamalar başladı
+Kullanıcı girişleri mail ve şifre üzerinden olacaktır
+
+
+/**
+**	13 Şubat Cuma Son
+**/
+
+/**
+**	16 Şubat Pazartesi Baş
+**/
+
+Servis tarafı farklı js lere bölündü (token,user,services,search)
+metotlar gerekli sınıflara gönderildi
+metotların tamamı test edildi, şuan bir hata yok
+
+
+/**
+**	16 Şubat Pazartesi Baş
+**/
