@@ -41,5 +41,37 @@ connection.query('SELECT * from kullanici where k_id = ?',[req.user_id], functio
 });
 });
 
+/*  
+  GET
+  ölçüler ekranındaki ilk açılışta çalıştırılması lazım
+  burada kullanıcının o ana kadar giriş yapılmış tarihleri ve en son girilmiş ölçüleri getirilir
+  @requestParams    : user_id
+*/ 
+router.get('/information/datesAndSize', secure, function(req, res) {
+  connection.query('SELECT tarih from olculer where k_id = ? order by tarih desc',[req.user_id], function(err, tarihler) {
+    connection.query('SELECT * from olculer where k_id = ? and tarih = ?',[req.user_id, tarihler[0].tarih], function(err, size) {
+      if (err) throw err;
+      res.json({
+        "tarihler" : tarihler,
+        "size"     : size
+         });
+    });
+  });
+});
+
+/*  
+  GET
+  istenilen tarihe göre kullanıcı ölçülerini getirir
+  @params           : tarih Açıklama tarih formatı YYYY-AA-GG şeklinde olmalıdır. örn : 2015-02-18
+  @requestParams    : user_id
+*/
+router.get('/information/size/:tarih', secure, function(req, res) {
+connection.query('SELECT * from olculer where k_id = ? and tarih = ?',[req.user_id, req.params.tarih], function(err, size) {
+  if (err) throw err;
+  res.json(size);
+});
+});
+
+
 
 module.exports = router;
