@@ -41,6 +41,7 @@ var secure = function(req, res, next) {
 router.post('/login', function(req, res){
 	var mail 	 = req.body.mail;
 	var password = req.body.password;
+	console.log(mail + "" + password);
 	connection.query('select * from kullanici where mail = ? and password = ?',[mail,password], function(err, user) {
 		
 		if(user.length === 0) {
